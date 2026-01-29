@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seni çoook Özledim ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #8e2de2, #4a00e0);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(142, 45, 226, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 75, 110, 0.2);
+            position: relative;
+            z-index: 10;
+            max-width: 90%;
+            width: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: #fff;
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+
+        p {
+            color: #f0f0f0;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .main-heart {
+            font-size: 80px;
+            display: inline-block;
+            animation: heartbeat 1.2s infinite;
+            cursor: pointer;
+            position: relative;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
+        }
+
+        .heart-inner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .bg-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .colorful-hearts {
+            margin-top: 25px;
+            font-size: 28px;
+        }
+
+        .mini-heart {
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .mini-heart:hover {
+            transform: scale(1.3);
+        }
+
+        .bg-text {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.08);
+            font-weight: 900;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        .flower {
+            position: fixed;
+            top: -50px;
+            z-index: 100;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(120vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-hearts" id="bg-hearts"></div>
+    
+    <div class="container">
+        <div class="main-heart">❤️<span class="heart-inner-text">A</span></div>
+        <h1>Seni Çook Özledim</h1>
+        <p>
+            ÖZLEDİMMMM <br>ÖZLEDİM SENİ ÇOK <br>ÇOK ÖZLEDİM SENİ <br> 
+            <BR>
+           ( kalplere tıkla 😘)
+        </p>
+        <div class="colorful-hearts">
+            <span class="mini-heart">❤️</span>
+            <span class="mini-heart">🧡</span>
+            <span class="mini-heart">💛</span>
+            <span class="mini-heart">💚</span>
+            <span class="mini-heart">💙</span>
+            <span class="mini-heart">💜</span>
+            <span class="mini-heart">🤎</span>
+            <span class="mini-heart">🖤</span>
+            <span class="mini-heart">🤍</span>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.main-heart').addEventListener('click', function() {
+            const flowers = ['🌸', '🌹', '🌺', '🌻', '🌷', '💐'];
+            createRain(flowers);
+        });
+
+        document.querySelectorAll('.mini-heart').forEach(heart => {
+            heart.addEventListener('click', function() {
+                createRain([this.innerText]);
+            });
+        });
+
+        function createRain(items) {
+            for (let i = 0; i < 30; i++) {
+                const el = document.createElement('div');
+                el.classList.add('flower');
+                el.innerText = items[Math.floor(Math.random() * items.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                document.body.appendChild(el);
+                
+                setTimeout(() => el.remove(), 5000);
+            }
+        }
+
+        // Arka plan yazıları
+        window.addEventListener('load', () => {
+            for (let i = 0; i < 50; i++) {
+                const text = document.createElement('div');
+                text.classList.add('bg-text');
+                text.innerText = 'Seni Çok Özledim';
+                text.style.left = Math.random() * 100 + 'vw';
+                text.style.top = Math.random() * 100 + 'vh';
+                text.style.fontSize = (Math.random() * 60 + 10) + 'px';
+                text.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
+                document.body.appendChild(text);
+            }
+        });
+    </script>
+</body>
+</html>
